@@ -1,0 +1,16 @@
+configuration:
+  download_model:
+    name: Download model at startup
+    description: Download the Kokoro model when the app starts if it is not already available.
+  api_log_level:
+    name: API Log Level
+    description: Choose how much detail Kokoro writes to the app log. Options are Debug, Info, Warning, and Error.
+  default_voice:
+    name: Default Voice
+    description: Voice used when a speech request does not specify one, for example am_fenrir. Use the Open Web UI link on the Kokoro app page to browse and preview voices.
+  enable_web_player:
+    name: Enable Web UI
+    description: Serve Kokoro's browser-based web player. Open it with the Open Web UI link on the Kokoro app page, or visit http://HOME_ASSISTANT_IP:8880/web directly.
+  enable_ssml:
+    name: Support SSML
+    description: Enable Speech Synthesis Markup Language, including pauses and other supported speech controls. Disable this unless you need SSML input.

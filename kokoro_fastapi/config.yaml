@@ -1,0 +1,30 @@
+name: Kokoro-FastAPI (CPU)
+version: "0.9.0-1"
+slug: kokoro_fastapi
+description: Run Kokoro-FastAPI as a local Home Assistant app
+url: https://github.com/Yaannn0815/HA-Kokoro-FastAPI-CPU
+arch:
+  - amd64
+  - aarch64
+startup: services
+boot: auto
+init: false
+ports:
+  8880/tcp: 8880
+ports_description:
+  8880/tcp: Kokoro OpenAI-compatible API and web interface
+webui: http://[HOST]:[PORT:8880]/web/
+options:
+  api_log_level: Info
+  default_voice: am_fenrir
+  enable_web_player: true
+  enable_ssml: true
+schema:
+  api_log_level: list(Debug|Info|Warning|Error)
+  default_voice: str
+  enable_web_player: bool
+  enable_ssml: bool
+map:
+  - type: data
+    read_only: false
+watchdog: http://[HOST]:[PORT:8880]/health
