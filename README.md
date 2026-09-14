@@ -1,15 +1,17 @@
 # Kokoro-FastAPI for Home Assistant
 
-This repo contains a Home Assistant app that runs [Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI) locally on the Home Assistant host. It is essentially nothing more than a wrapper around the work the FastKoko folks did, with the goal to have the backend running inside Home Assistant.
+This repo contains a Home Assistant app that runs [Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI) locally on the Home Assistant host. It is essentially a wrapper around the upstream server, with the goal of running the backend inside Home Assistant.
 
 It works well with the [Kokoro TTS HACS integration](https://github.com/beecho01/Kokoro-TTS).
 
-## Overview
+## Usage
 
-- Runs the Kokoro-FastAPI CPU image in a Home Assistant app
-- Exposes the OpenAI-compatible API on port 8880
-- Includes the optional web interface at `/web`
-- Maps Home Assistant app options into Kokoro environment variables
+1. Add this repository to **Settings > Apps > App store > Repositories**.
+2. Install **Kokoro Server**.
+3. Start the app and wait for the model to finish loading.
+4. Add and configure the [Kokoro TTS HACS integration](https://github.com/beecho01/Kokoro-TTS).
+
+Click **Open Web UI** on the app page, or open `http://HOME_ASSISTANT_IP:8880/web/` to browse the Kokoro web interface.
 
 ## App structure
 
@@ -17,46 +19,14 @@ It works well with the [Kokoro TTS HACS integration](https://github.com/beecho01
 - [repository.yaml](repository.yaml) — repository metadata for Home Assistant
 - [LICENSE](LICENSE) — project license
 
-## Installation
+## Settings
 
-1. Open Home Assistant.
-2. Go to Settings > Apps > App store.
-3. Add this repository as a custom app repository.
-4. Install the app and start it.
-5. Wait for the model to finish loading.
+- **API Log Level**: Choose how much detail Kokoro writes to the app log. Options are `Debug`, `Info`, `Warning`, and `Error`.
+- **Default Voice**: Default Kokoro voice identifier. Use the **Open Web UI** link to browse and preview voices.
+- **Enable Web UI**: Serve Kokoro's browser-based web player at `/web` on port `8880`.
+- **Support SSML**: Enable Speech Synthesis Markup Language, including pauses and other supported speech controls.
 
-Once running, the app exposes:
-
-- API: http://HOME_ASSISTANT_IP:8880
-- Web UI: http://HOME_ASSISTANT_IP:8880/web
-- Docs: http://HOME_ASSISTANT_IP:8880/docs
-- Health: http://HOME_ASSISTANT_IP:8880/health
-
-## Example API call
-
-```bash
-curl -X POST "http://HOME_ASSISTANT_IP:8880/v1/audio/speech" \
-  -H "Content-Type: application/json" \
-  -d '{"model":"kokoro","voice":"am_fenrir","input":"Hello from Kokoro","response_format":"mp3"}' \
-  --output test.mp3
-```
-
-Note: opening `/v1/audio/speech` directly in a browser performs a GET request and returns `Method Not Allowed`. Use the API docs or send a POST request from a tool or script.
-
-## Configuration options
-
-The app supports these Home Assistant options:
-
-- `api_log_level`: Log verbosity (`Debug`, `Info`, `Warning`, `Error`)
-- `default_voice`: Default voice used when a request does not specify one
-- `enable_web_player`: Enables the Kokoro web interface
-- `enable_ssml`: Enables SSML support when set to true
-
-## Local development notes
-
-When testing a manually copied local app, replace the entire `kokoro_fastapi` directory, reload the local app repository, and use Rebuild before starting it again.
-
-The app source in [kokoro_fastapi](kokoro_fastapi) uses the official `ghcr.io/remsky/kokoro-fastapi-cpu:v0.9.0` image for both `amd64` and `aarch64` targets, with a small wrapper that maps Home Assistant app options into Kokoro environment variables.
+The app supports Home Assistant `amd64` and `aarch64` installations (CPU-only).
 
 ## Related links
 
