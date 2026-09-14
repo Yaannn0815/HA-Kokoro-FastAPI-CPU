@@ -13,12 +13,6 @@ It works well with the [Kokoro TTS HACS integration](https://github.com/beecho01
 
 Click **Open Web UI** on the app page, or open `http://HOME_ASSISTANT_IP:8880/web/` to browse the Kokoro web interface.
 
-## App structure
-
-- [kokoro_fastapi](kokoro_fastapi) — Home Assistant app source
-- [repository.yaml](repository.yaml) — repository metadata for Home Assistant
-- [LICENSE](LICENSE) — project license
-
 ## Settings
 
 - **API Log Level**: Choose how much detail Kokoro writes to the app log. Options are `Debug`, `Info`, `Warning`, and `Error`.
