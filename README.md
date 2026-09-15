@@ -6,8 +6,8 @@ It works well with the [Kokoro TTS HACS integration](https://github.com/beecho01
 
 ## Usage
 
-1. Add this repository to **Settings > Apps > App store > Repositories**.
-2. Install **Kokoro Server**.
+1. Add this repository (`https://github.com/remsky/Kokoro-FastAPI`) to **Settings > Apps > App store > Repositories**.
+2. Install **Kokoro-FastAPI (CPU)**.
 3. Start the app and wait for the model to finish loading.
 4. Add and configure the [Kokoro TTS HACS integration](https://github.com/beecho01/Kokoro-TTS).
 
