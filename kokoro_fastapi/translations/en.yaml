@@ -4,10 +4,10 @@ configuration:
     description: Download the Kokoro model when the app starts if it is not already available.
   api_log_level:
     name: API Log Level
-    description: Choose how much detail Kokoro writes to the app log. Options are Debug, Info, Warning, and Error.
+    description: Choose how much detail Kokoro writes to the app log.
   default_voice:
-    name: Default Voice
-    description: Voice used when a speech request does not specify one, for example am_fenrir. Use the Open Web UI link on the Kokoro app page to browse and preview voices.
+    name: Default Voice (fallback only!)
+    description: Voice used when a speech request does not specify one. Note: This setting here is overruled by your settings in the Kokoro-TTS HACS integration! 
   enable_web_player:
     name: Enable Web UI
     description: Serve Kokoro's browser-based web player. Open it with the Open Web UI link on the Kokoro app page, or visit http://HOME_ASSISTANT_IP:8880/web directly.
