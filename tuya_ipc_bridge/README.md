@@ -16,6 +16,12 @@ Not all "Tuya" cameras work with the native Home Assistant Tuya integration, nor
 
 See the **Documentation** tab for full setup, usage, and troubleshooting instructions.
 
+## Usage
+
+1. If not already done in HA, add ``https://github.com/YaannnTech/HA-Apps`` to **Settings > Apps > App store > Repositories**.
+2. Find **Tuya IPC Bridge** in the store and click **Install**.
+3. Start the app, **then** configure accounts through the included Web UI.
+
 ## Settings
 
 - **RTSP Port**: Port the bridged RTSP server listens on. The default is `8553`.
