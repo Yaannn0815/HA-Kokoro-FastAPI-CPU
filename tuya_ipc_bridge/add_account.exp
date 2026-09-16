@@ -1,0 +1,37 @@
+#!/usr/bin/expect -f
+# Drives `tuya-ipc-terminal auth add` non-interactively.
+# Usage: add_account.exp <region> <email> <password>
+set timeout 60
+
+set region   [lindex $argv 0]
+set email    [lindex $argv 1]
+set password [lindex $argv 2]
+
+spawn tuya-ipc-terminal auth add $region $email --password
+
+expect {
+    -re "already exists.*\r?\n" {
+        exp_continue
+    }
+    "(y/N)" {
+        send "y\r"
+        exp_continue
+    }
+    "Enter password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "Successfully added" {
+        exit 0
+    }
+    "authentication failed" {
+        exit 1
+    }
+    eof {
+        exit 0
+    }
+    timeout {
+        puts stderr "Timed out waiting for auth add prompt"
+        exit 1
+    }
+}
